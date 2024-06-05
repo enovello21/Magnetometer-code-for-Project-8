@@ -1,17 +1,12 @@
 /*
-    This sketch combines a hardware ethernet connection
-      with I2C MLX90393 magnetometer communication.
+    This sketch combines a Serial connection
+      with I2C MLX90393 magnetometer communication. This is to be used with the
+      magnetometer_readings python program, which writes the data to a txt file
+      Magnetometer readings are in units of microTesla.
 */
-
-#include <ETH.h>
 #include <MLX90393.h>
-#include<time.h>
 #define N_Mag 4
 MLX90393 mlx[N_Mag];
-//Define telnet server parameters
-#define MAX_SRV_CLIENTS 4
-const byte charLim = 32;
-const char terminator = '\n';
 
 void setup()
 {
@@ -51,11 +46,15 @@ void measurement(uint8_t magID)
 
 void loop()
 {
-  for (uint8_t i=0; i < 2; i++) {
-    
-    measurement(i);
+ 
+  if (Serial.available()){
+    Serial.read();
+    for (uint8_t i=0; i < 2; i++) {
+      measurement(i);
+    }
+    //sprintf(buf,"%02d:%02d:%02d",runHours,runMinutes,runSeconds);
+    //Serial.println(buf);
+    Serial.println("XXX");
   }
-  delay(5000);
-  Serial.print(millis()); 
-  Serial.println(" ms");
+
 }
