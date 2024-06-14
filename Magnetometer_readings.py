@@ -11,8 +11,6 @@ Basic_test.write("Magnetic fields are written in µT")
 Basic_test.write('\n')
 Basic_test.close()
 ports = [x.device for x in comports() if 'usbserial' in x.device]
-if len(ports) != 1:
-    print('ERROR: too many ports', ports)
 myserial = serial.Serial(ports[0], baudrate=115200)
 while True:
     Basic_test = open("Basic_test.txt", "a")
