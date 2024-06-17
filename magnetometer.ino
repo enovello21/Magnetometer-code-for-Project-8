@@ -12,7 +12,6 @@ void setup()
 {
   Serial.begin(115200);
 
-  Serial.println("network and server setup initialized");
   
   Wire.begin(17, 16);
   delay(1000);
@@ -52,9 +51,7 @@ void loop()
     for (uint8_t i=0; i < 2; i++) {
       measurement(i);
     }
-    //sprintf(buf,"%02d:%02d:%02d",runHours,runMinutes,runSeconds);
-    //Serial.println(buf);
-    Serial.println("XXX");
+
   }
 
 }
