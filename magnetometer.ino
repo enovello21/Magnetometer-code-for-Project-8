@@ -18,6 +18,7 @@ void setup()
   //uint8_t status;
   for(uint8_t j = 0; j < 2; j++){
     for(uint8_t i = 0; i < N_Mag; i++){
+        mlx[i].I2C_BASE_ADDR = 0x18+i;
       Serial.println(mlx[i].begin(i/2, i%2)); // 255 return is BAD!!!
       delay(500);
     }
