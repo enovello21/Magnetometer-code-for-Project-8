@@ -26,3 +26,5 @@ PYTHON:
 4) Follow the instructions in the python program to configure as you like. By default the program reads from 3 probes per reading.
    
 5) Start the python program and you should begin having the file read data and you are all set
+
+The MagnetometerPHT_to_hdf5.py file converts the data in the txt file created by Magnetometer_readings and converts it to several hdf5 files, one for each probe. This is currently designed with the assumption that the magnetometer_readings code was run with 2 magnetometer probes and 1 PHT sensor.
